@@ -1,23 +1,22 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
+  <div id="app" class="wrapper">
     <router-view/>
   </div>
 </template>
-
 <script>
-export default {
-  name: 'App'
-}
+  export default {
+    name: "App"
+  };
 </script>
-
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  .wrapper {
+    box-sizing: border-box;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    min-height: 600px;
+    font-size: 32px;
+  }
 </style>
+
+
