@@ -1,6 +1,6 @@
 import Vue from "vue"
 import Router from "vue-router"
-const normal = () => import("@/pages/activity/normal")
+const normal = () => import("@/pages/activity/info")
 // 明确安装路由功能
 Vue.use(Router);
 

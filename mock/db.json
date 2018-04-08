@@ -1,0 +1,33 @@
+{
+  "activityInfo": {
+    "data": {
+      "actId": 821,
+      "key": "",
+      "tagType": 1,
+      "headUrl": "",
+      "headHeight": 628,
+      "bgColor": "#5f11bb"
+    },
+    "success": true
+  },
+  "userInfo": {
+    "data": {
+      "uid": 0,
+      "province": "",
+      "provinceName": "",
+      "city": 383,
+      "cityName": "",
+      "district": 0,
+      "districtName": "",
+      "street": 0,
+      "streetName": "",
+      "address": "",
+      "remainMoney": "",
+      "orderNum": "",
+      "addressId": "",
+      "mobilePhone": "",
+      "userType": 1
+    },
+    "success": true
+  }
+}

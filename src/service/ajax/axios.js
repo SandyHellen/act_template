@@ -6,7 +6,7 @@ axios.defaults.headers = {
   "X-jd-ts": new Date().getTime()
 };
 //
-axios.defaults.baseURL = '/promotion';
+axios.defaults.baseURL = '';
 // 表示跨域请求时是否需要使用凭证
 axios.defaults.withCredentials = true;
 

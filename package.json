@@ -5,8 +5,9 @@
   "author": "SandyHellen <874322818@qq.com>",
   "private": true,
   "scripts": {
+    "mock": "json-server --watch mock/db.json --port 3003",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
+    "start": "npm run dev & npm run mock",
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js"
   },
@@ -55,6 +56,7 @@
     "vue-loader": "^14.1.1",
     "vue-style-loader": "^3.1.2",
     "vue-template-compiler": "^2.5.2",
+    "vuex": "^3.0.1",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",

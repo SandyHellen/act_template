@@ -1,7 +1,5 @@
 import axios from "axios";
 let baseData = {
-  uid: 675995,
-  cityId: 383,
   deviceId: "358239056111620",
   version: "3.0.2",
   appkey: "1711394416800",
@@ -29,14 +27,28 @@ export const GoodsList = data => {
   // 本女神的代码
   return axios({
     method: "get",
-    url: "/activity/goods/list",
+    url: "/promotion/activity/goods/list",
     params: Object.assign(baseData, data)
   });
 };
 export const YunxiuList = data => {
   return axios({
     method: "get",
-    url: "/activity/yun_xiu/goods/list",
+    url: "/promotion/activity/yun_xiu/goods/list",
     params: Object.assign(baseData, data)
   });
 };
+
+export const ActivityInfo =  () => {
+  return axios({
+    method: "get",
+    url: "/api/activityInfo"
+  });
+};
+
+export const UserInfo =()=>{
+  return axios({
+    method: "get",
+    url: "/api/userInfo"
+  });
+}
