@@ -10,7 +10,7 @@
     },
     "success": true
   },
-  "userInfo": {
+  "login": {
     "data": {
       "uid": 0,
       "province": "",

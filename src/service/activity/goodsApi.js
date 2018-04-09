@@ -49,6 +49,6 @@ export const ActivityInfo =  () => {
 export const UserInfo =()=>{
   return axios({
     method: "get",
-    url: "/api/userInfo"
+    url: "/api/login"
   });
 }

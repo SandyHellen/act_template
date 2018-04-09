@@ -1,15 +1,18 @@
 import Vue from "vue"
 import Router from "vue-router"
-const normal = () => import("@/pages/activity/info")
 // 明确安装路由功能
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: "/",
+      path: "/activity",
       name: "activity",
-      component: normal
+      component: () => import("@/pages/activity/info")
+    },{
+      path:"/",
+      name:"login",
+      component:() => import("@/pages/login/login")
     }
   ]
 });
