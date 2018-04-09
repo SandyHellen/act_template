@@ -35,7 +35,7 @@
 <script>
   import GoodsDetail from '@/components/gooddetail'
   import { GoodsList, YunxiuList } from '@/service/activity/goodsApi'
-
+  import { mapState } from 'vuex'
   export default {
       name: 'normal',
       props: {
@@ -48,6 +48,7 @@
               type: String
           }
       },
+      computed: mapState(['userInfo']),
       data() {
           return {
               goodsData: {},
@@ -70,8 +71,8 @@
           // 普通的商品接口
           getGoodsList() {
               GoodsList({
-                  uid: 675995,
-                  cityId: 383,
+                  uid: this.userInfo.uid || 0,
+                  cityId: this.userInfo.cityId || 383,
                   actId: this.actId,
                   tagType: 1
               }).then(res => {
@@ -84,8 +85,8 @@
           // 云修商品接口
           getYunxiuList() {
               GoodsList({
-                  uid: 675995,
-                  cityId: 383,
+                  uid: this.userInfo.uid || 0,
+                  cityId: this.userInfo.cityId || 383,
                   key: this.key,
                   tagType: 1
               }).then(res => {

@@ -10,7 +10,11 @@
       <span v-if=" groupInfo.remainNum && groupInfo.remainNum < 5000">库存:{{groupInfo.remainNum}}</span>
       <span>购买单位：{{goodInfo.numberDescription}}</span>
     </p>
-    <div class="price">
+    <div v-if='userInfo.userType == 2'>
+     <a v-if='userInfo.uid==0'>登录马上抢</a>
+     <a v-else>认证即享优惠</a>
+    </div>
+    <div class="price" v-else>
       <span>¥
         <em>{{groupInfo.groupActPrice}}</em>
       </span>
@@ -20,97 +24,99 @@
 </template>
 <script>
   import AmountBtn from '@/components/amountbtn'
+  import { mapState } from 'vuex'
   export default {
-    props: {
-      groupInfo: {
-        type: Object,
-        required: true
+      props: {
+          groupInfo: {
+              type: Object,
+              required: true
+          },
+          goodInfo: {
+              type: Object,
+              required: true
+          },
+          btnDisableClass: {
+              type: String,
+              default: 'gray'
+          },
+          times: {
+              default: 1,
+              type: Number
+          }
       },
-      goodInfo: {
-        type: Object,
-        required: true
+      computed: mapState(['userInfo']),
+      data() {
+          return {
+              inputValue: 0,
+              maxVaule: 0,
+              minValue: 0,
+              startValue: 0,
+              initValue: 0
+          }
       },
-      btnDisableClass: {
-        type: String,
-        default: 'gray'
+      components: {
+          'amount-btn': AmountBtn
       },
-      times: {
-        default: 1,
-        type: Number
-      }
-    },
-    data() {
-      return {
-        inputValue: 0,
-        maxVaule: 0,
-        minValue: 0,
-        startValue: 0,
-        initValue: 0
-      }
-    },
-    components: {
-      'amount-btn': AmountBtn
-    },
-    mounted() {
-      let remain = this.groupInfo.remainNum,
-        alreadyBuy = this.groupInfo.alreadyBuyNum || 0
-      this.minValue = this.groupInfo.groupMinNumber
-      this.maxVaule = this.groupInfo.groupMaxNumber
-      remain = remain || this.maxVaule
-      this.maxVaule = Math.min(this.maxVaule - alreadyBuy, remain)
-      this.minValue =
-        this.maxVaule < this.minValue ? this.maxVaule : this.minValue
-    },
-    methods: {}
+      mounted() {
+          let remain = this.groupInfo.remainNum,
+              alreadyBuy = this.groupInfo.alreadyBuyNum || 0
+          this.minValue = this.groupInfo.groupMinNumber
+          this.maxVaule = this.groupInfo.groupMaxNumber
+          remain = remain || this.maxVaule
+          this.maxVaule = Math.min(this.maxVaule - alreadyBuy, remain)
+          this.minValue =
+              this.maxVaule < this.minValue ? this.maxVaule : this.minValue
+      },
+      methods: {}
   }
 </script>
 <style lang="scss" scoped>
   .goods {
-    width: 217px;
-    min-height: 320px;
-    border: 6px solid #f8f8f8;
-    background: #fff;
-    cursor: pointer;
-    position: relative;
-    .goodsImg {
-      text-align: center;
-      vertical-align: middle;
-      height: 225px;
-      img {
-        width: 215px;
-        height: 225px;
-      }
-    }
-    .goodsName {
-      font-size: 13px;
-      color: #666;
-      line-height: 20px;
-      word-break: break-all;
-      padding: 0 10px;
-      overflow: hidden;
-      height: 40px;
-    }
-    .units {
-      padding: 0 10px;
-      height: 15px;
-      line-height: 15px;
-      font-size: 12px;
-      color: #9d9d9d;
-      span {
-        margin-right: 10px;
-      }
-    }
-    .price {
-      // height: 40px;
-      color: #d70000;
-      font-size: 12px;
-      padding: 3px 10px;
-      font: 700 16px/1.5 arial;
+      width: 217px;
+      min-height: 320px;
+      border: 6px solid #f8f8f8;
+      background: #fff;
+      cursor: pointer;
       position: relative;
-      em {
-        font-size: 20px;
+      .goodsImg {
+          text-align: center;
+          vertical-align: middle;
+          height: 225px;
+          img {
+              width: 215px;
+              height: 225px;
+          }
       }
-    }
+      .goodsName {
+          font-size: 13px;
+          color: #666;
+          line-height: 20px;
+          word-break: break-all;
+          padding: 0 10px;
+          overflow: hidden;
+          height: 40px;
+      }
+      .units {
+          padding: 0 10px;
+          height: 15px;
+          line-height: 15px;
+          font-size: 12px;
+          color: #9d9d9d;
+          span {
+              margin-right: 10px;
+          }
+      }
+      .price {
+          // height: 40px;
+          color: #d70000;
+          font-size: 12px;
+          padding: 3px 10px;
+          font: 700 16px/1.5 arial;
+          position: relative;
+          em {
+              font-size: 20px;
+          }
+      }
   }
 </style>
 
