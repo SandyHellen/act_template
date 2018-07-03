@@ -5,17 +5,17 @@
 </template>
 <script>
   export default {
-    name: "App"
-  };
+      name: 'App'
+  }
 </script>
 <style>
   .wrapper {
-    box-sizing: border-box;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    min-height: 600px;
-    font-size: 32px;
+      box-sizing: border-box;
+      /* display: flex;
+        justify-content: center;
+        align-items: center; */
+      min-height: 600px;
+      font-size: 32px;
   }
 </style>
 
